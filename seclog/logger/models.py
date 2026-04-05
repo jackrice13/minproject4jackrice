@@ -274,3 +274,17 @@ class PostIncidentReview(models.Model):
 
     def __str__(self):
         return f"Review for Incident #{self.incident.pk}"
+
+class ClosingNote(models.Model):
+    incident = models.OneToOneField(
+        Incident, on_delete=models.CASCADE, related_name='closing_note'
+    )
+    summary         = models.TextField()
+    resolution      = models.TextField()
+    authored_by     = models.ForeignKey(
+        Responder, on_delete=models.SET_NULL, null=True, blank=True
+    )
+    authored_at     = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Closing Note for Incident #{self.incident.pk}"

@@ -11,5 +11,6 @@ urlpatterns = [
     path('logger/edit/<int:pk>/', views.editIncident, name='editIncident'),
     path('logger/gather/', views.infoGather, name='infoGather'),
     path('logger/resolve/', views.resolveIncident, name='resolveIncident'),
-    path('logout/', views.logout_view, name='logout'),                # ← added
+    path('logout/', views.logout_view, name='logout'),
+    path('logger/quick-close/<int:pk>/', views.quickClose, name='quickClose')# ← added
 ]

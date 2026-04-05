@@ -1,6 +1,6 @@
 from django import forms
 from .models import Incident, IncidentType, AttackVector, Responder
-from .models import AffectedAsset, IndicatorOfCompromise, ResponseAction, MitreMapping, Evidence
+from .models import AffectedAsset, IndicatorOfCompromise, ResponseAction, MitreMapping, Evidence, ClosingNote
 
 class NewIncidentForm(forms.ModelForm):
     class Meta:
@@ -76,3 +76,7 @@ class EvidenceForm(forms.ModelForm):
             'chain_of_custody_notes': forms.Textarea(attrs={'rows': 2}),
             'collected_at':           forms.DateTimeInput(attrs={'type': 'datetime-local'}),
         }
+class ClosingNoteForm(forms.ModelForm):
+    class Meta:
+        model = ClosingNote
+        fields = ['summary', 'resolution', 'authored_by']

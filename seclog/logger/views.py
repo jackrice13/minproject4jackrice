@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 from .models import Incident
-from .forms import NewIncidentForm, EditIncidentForm, AffectedAssetForm, IoCForm, ResponseActionForm, MitreMappingForm, EvidenceForm
+from .forms import NewIncidentForm, EditIncidentForm, AffectedAssetForm, IoCForm, ResponseActionForm, MitreMappingForm, EvidenceForm, ClosingNoteForm, Incident, Responder, ClosingNote
 
 
 def landing(request):
@@ -47,6 +48,7 @@ def index(request):
     context = {
         'open_incidents': open_incidents,
         'closed_incidents': closed_incidents,
+        'responders': Responder.objects.all(),
     }
     return render(request, 'logger/index.html', context)
 
@@ -138,6 +140,7 @@ def myIncidents(request):
     context = {
         'open_incidents': open_incidents,
         'closed_incidents': closed_incidents,
+        'responders': Responder.objects.all(),
     }
     return render(request, 'logger/my_incidents.html', context)
 
@@ -146,3 +149,31 @@ def infoGather(request):
 
 def resolveIncident(request):
     return render(request, 'logger/index.html')
+@login_required(login_url='/')
+def quickClose(request, pk):
+    incident = get_object_or_404(Incident, pk=pk)
+
+    if request.method == 'POST':
+        form = ClosingNoteForm(request.POST)
+        if form.is_valid():
+            from django.utils import timezone
+
+            # Update existing closing note or create a new one
+            closing_note, created = ClosingNote.objects.update_or_create(
+                incident=incident,
+                defaults={
+                    'summary':     form.cleaned_data['summary'],
+                    'resolution':  form.cleaned_data['resolution'],
+                    'authored_by': form.cleaned_data['authored_by'],
+                }
+            )
+
+            incident.status = Incident.Status.CLOSED
+            incident.resolved_at = timezone.now()
+            incident.save()
+
+            return JsonResponse({'success': True})
+        else:
+            return JsonResponse({'success': False, 'errors': form.errors})
+
+    return JsonResponse({'success': False, 'errors': 'Invalid request method'})
