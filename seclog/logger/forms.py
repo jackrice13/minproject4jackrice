@@ -1,6 +1,8 @@
 from django import forms
 from .models import Incident, IncidentType, AttackVector, Responder
 from .models import AffectedAsset, IndicatorOfCompromise, ResponseAction, MitreMapping, Evidence, ClosingNote
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class NewIncidentForm(forms.ModelForm):
     class Meta:
@@ -80,3 +82,13 @@ class ClosingNoteForm(forms.ModelForm):
     class Meta:
         model = ClosingNote
         fields = ['summary', 'resolution', 'authored_by']
+
+class RegisterForm(UserCreationForm):
+    first_name = forms.CharField(max_length=100, required=True)
+    last_name  = forms.CharField(max_length=100, required=True)
+    email      = forms.EmailField(required=True)
+    role       = forms.CharField(max_length=100, required=True, initial='Analyst')
+
+    class Meta:
+        model  = User
+        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']

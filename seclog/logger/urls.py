@@ -12,5 +12,6 @@ urlpatterns = [
     path('logger/gather/', views.infoGather, name='infoGather'),
     path('logger/resolve/', views.resolveIncident, name='resolveIncident'),
     path('logout/', views.logout_view, name='logout'),
-    path('logger/quick-close/<int:pk>/', views.quickClose, name='quickClose')# ← added
+    path('logger/quick-close/<int:pk>/', views.quickClose, name='quickClose'),
+    path('register/', views.register, name='register'),# ← added
 ]

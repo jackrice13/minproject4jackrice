@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from .models import Incident
-from .forms import NewIncidentForm, EditIncidentForm, AffectedAssetForm, IoCForm, ResponseActionForm, MitreMappingForm, EvidenceForm, ClosingNoteForm, Incident, Responder, ClosingNote
+from .forms import RegisterForm, NewIncidentForm, EditIncidentForm, AffectedAssetForm, IoCForm, ResponseActionForm, MitreMappingForm, EvidenceForm, ClosingNoteForm, Incident, Responder, ClosingNote
 
 
 def landing(request):
@@ -177,3 +177,31 @@ def quickClose(request, pk):
             return JsonResponse({'success': False, 'errors': form.errors})
 
     return JsonResponse({'success': False, 'errors': 'Invalid request method'})
+
+def register(request):
+    if request.user.is_authenticated:
+        return redirect('logger:index')
+
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name  = form.cleaned_data['last_name']
+            user.email      = form.cleaned_data['email']
+            user.save()
+
+            # Get or create the Responder in case signal didn't fire
+            responder, created = Responder.objects.get_or_create(user=user)
+            responder.role = form.cleaned_data['role']
+            responder.save()
+
+            login(request, user)
+            return redirect('logger:index')
+    else:
+        form = RegisterForm()
+
+    return render(request, 'logger/landing.html', {
+        'form': form,
+        'show_register': True
+    })
