@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Incident Dashboard</title>
+</head>
+<body>
+
+<h1>Incident Dashboard</h1>
+
+<!-- ===== OPEN INCIDENTS ===== -->
+<h2>Open Incidents ({{ open_incidents.count }})</h2>
+
+{% if open_incidents %}
+    <table border="1" cellpadding="6">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Severity</th>
+            <th>Type</th>
+            <th>Assigned To</th>
+            <th>Reported At</th>
+        </tr>
+        {% for incident in open_incidents %}
+        <tr>
+            <td>{{ incident.incident_id }}</td>
+            <td>{{ incident.title }}</td>
+            <td>{{ incident.get_status_display }}</td>
+            <td>{{ incident.get_severity_display }}</td>
+            <td>{{ incident.incident_type }}</td>
+            <td>{{ incident.assigned_to|default:"Unassigned" }}</td>
+            <td>{{ incident.reported_at|default:"Unknown" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No open incidents.</p>
+{% endif %}
+
+
+<!-- ===== CLOSED INCIDENTS ===== -->
+<h2>Closed Incidents ({{ closed_incidents.count }})</h2>
+
+{% if closed_incidents %}
+    <table border="1" cellpadding="6">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Severity</th>
+            <th>Type</th>
+            <th>Assigned To</th>
+            <th>Resolved At</th>
+        </tr>
+        {% for incident in closed_incidents %}
+        <tr>
+            <td>{{ incident.incident_id }}</td>
+            <td>{{ incident.title }}</td>
+            <td>{{ incident.get_status_display }}</td>
+            <td>{{ incident.get_severity_display }}</td>
+            <td>{{ incident.incident_type }}</td>
+            <td>{{ incident.assigned_to|default:"Unassigned" }}</td>
+            <td>{{ incident.resolved_at|default:"—" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No closed incidents.</p>
+{% endif %}
+
+</body>
+</html>

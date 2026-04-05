@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Incident</title>
+</head>
+<body>
+
+<h1>Open New Incident</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    <table>
+        {{ form.as_table }}
+    </table>
+
+    <br>
+    <button type="submit">Open Incident</button>
+    <a href="{% url 'logger:index' %}">Cancel</a>
+</form>
+
+</body>
+</html>
