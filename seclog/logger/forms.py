@@ -17,7 +17,7 @@ class NewIncidentForm(forms.ModelForm):
             'assigned_to',
         ]
         widgets = {
-            'reported_at': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'reported_at': forms.DateTimeInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
         }
 
 
@@ -31,9 +31,9 @@ class EditIncidentForm(forms.ModelForm):
             'downtime_minutes', 'business_impact', 'cve_number', 'repeat_incident',
         ]
         widgets = {
-            'detected_at':  forms.DateTimeInput(attrs={'type': 'datetime-local'}),
-            'reported_at':  forms.DateTimeInput(attrs={'type': 'datetime-local'}),
-            'resolved_at':  forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'detected_at':  forms.DateTimeInput(attrs={'type': 'datetime-local'},format='%Y-%m-%dT%H:%M'),
+            'reported_at':  forms.DateTimeInput(attrs={'type': 'datetime-local'},format='%Y-%m-%dT%H:%M'),
+            'resolved_at':  forms.DateTimeInput(attrs={'type': 'datetime-local'},format='%Y-%m-%dT%H:%M'),
             'business_impact': forms.Textarea(attrs={'rows': 3}),
         }
 
