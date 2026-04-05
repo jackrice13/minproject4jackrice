@@ -1,0 +1,204 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecLog — Enterprise Incident Response Platform</title>
+    <link rel="stylesheet" href="{% static 'logger/style.css' %}">
+    <style>
+        /* Landing page specific styles */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            min-height: calc(100vh - 56px);
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-left h1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--green);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .hero-left h1 span { color: var(--cyan); }
+
+        .hero-left .tagline {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin: 1rem 0 2rem;
+            line-height: 1.8;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .feature-list li {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .feature-list li::before {
+            content: '▸';
+            color: var(--green);
+        }
+
+        .login-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--green);
+            padding: 2.5rem;
+        }
+
+        .login-box h2 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--cyan);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .login-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .login-field label {
+            font-size: 0.75rem;
+            color: var(--cyan);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .login-field input {
+            width: 100%;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 0.75rem;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 1px solid var(--green);
+            background: transparent;
+            color: var(--green);
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .login-btn:hover {
+            background: var(--green);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px rgba(0,255,65,0.3);
+        }
+
+        .error-msg {
+            color: var(--red);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border: 1px solid var(--red);
+            background: rgba(255,58,58,0.05);
+        }
+
+        .error-msg::before { content: '! '; }
+
+        .trusted-bar {
+            border-top: 1px solid var(--border);
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; min-height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <span class="nav-brand">Sec<span>Log</span></span>
+    <div class="nav-spacer"></div>
+    <span style="color: var(--text-muted); font-size: 0.75rem; letter-spacing: 1px;">
+        ENTERPRISE INCIDENT RESPONSE
+    </span>
+</nav>
+
+<div class="hero">
+
+    <!-- LEFT: Marketing copy -->
+    <div class="hero-left">
+        <h1>Incident<br>Response<br><span>Reimagined.</span></h1>
+        <p class="tagline">
+            SecLog gives your SOC team a unified platform to detect, track,
+            and resolve security incidents — with full audit trails, MITRE ATT&CK
+            mapping, and chain-of-custody evidence logging.
+        </p>
+        <ul class="feature-list">
+            <li>Real-time incident tracking with severity triage</li>
+            <li>MITRE ATT&CK framework integration</li>
+            <li>IoC management and threat correlation</li>
+            <li>Chain-of-custody evidence logging</li>
+            <li>Full responder assignment and audit trail</li>
+            <li>Post-incident review and lessons learned</li>
+        </ul>
+    </div>
+
+    <!-- RIGHT: Login form -->
+    <div class="login-box">
+        <h2>// Secure Access</h2>
+
+        {% if error %}
+            <div class="error-msg">{{ error }}</div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="login-field">
+                <label for="username">Operator ID</label>
+                <input type="text" id="username" name="username" autocomplete="username" required>
+            </div>
+            <div class="login-field">
+                <label for="password">Passphrase</label>
+                <input type="password" id="password" name="password" autocomplete="current-password" required>
+            </div>
+            <button type="submit" class="login-btn">Authenticate →</button>
+        </form>
+    </div>
+
+</div>
+
+<div class="trusted-bar">
+    &copy; 2026 SecLog Systems &nbsp;|&nbsp; SOC Operations Platform &nbsp;|&nbsp; All access logged
+</div>
+
+</body>
+</html>

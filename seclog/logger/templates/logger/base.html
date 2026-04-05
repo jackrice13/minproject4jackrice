@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SecLog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'logger/style.css' %}">
+</head>
+<body>
+
+<nav>
+    <a href="{% url 'logger:landing' %}" class="nav-brand">Sec<span>Log</span></a>
+    <a href="{% url 'logger:index' %}">Dashboard</a>
+    <a href="{% url 'logger:myIncidents' %}">My Incidents</a>
+    <a href="{% url 'logger:newIncident' %}">New Incident</a>
+    <div class="nav-spacer"></div>
+    <span style="color: var(--text-muted); font-size: 0.75rem;">{{ request.user.username }}</span>
+    <a href="{% url 'logger:logout' %}">Logout</a>
+</nav>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

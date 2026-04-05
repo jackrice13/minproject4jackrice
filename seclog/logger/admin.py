@@ -70,9 +70,15 @@ class AttackVectorAdmin(admin.ModelAdmin):
 
 @admin.register(Responder)
 class ResponderAdmin(admin.ModelAdmin):
-    list_display  = ('name', 'email', 'role')
-    search_fields = ('name', 'email', 'role')
-    list_filter   = ('role',)
+    list_display = ['get_name', 'get_email', 'role']
+
+    def get_name(self, obj):
+        return obj.user.get_full_name() or obj.user.username
+    get_name.short_description = 'Name'
+
+    def get_email(self, obj):
+        return obj.user.email
+    get_email.short_description = 'Email'
 
 
 @admin.register(Incident)

@@ -1,0 +1,168 @@
+{% extends 'logger/base.html' %}
+{% block title %}{{ incident.incident_id }} — SecLog{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{{ incident.incident_id }} — {{ incident.title }}</h1>
+    <p><a href="{% url 'logger:index' %}">← Back to Dashboard</a></p>
+</div>
+
+<h1>Incident: {{ incident.incident_id }} — {{ incident.title }}</h1>
+<a href="{% url 'logger:index' %}">← Back to Dashboard</a>
+
+<hr>
+
+<!-- ===== INCIDENT DETAILS ===== -->
+<h2>Incident Details</h2>
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="form_type" value="incident">
+    <table>{{ incident_form.as_table }}</table>
+    <button type="submit">Save Details</button>
+</form>
+
+<hr>
+
+<!-- ===== AFFECTED ASSETS ===== -->
+<h2>Affected Assets</h2>
+
+{% if assets %}
+    <table border="1" cellpadding="6">
+        <tr><th>Hostname</th><th>IP Address</th><th>Type</th><th>Department</th></tr>
+        {% for asset in assets %}
+        <tr>
+            <td>{{ asset.hostname }}</td>
+            <td>{{ asset.ip_address }}</td>
+            <td>{{ asset.get_asset_type_display }}</td>
+            <td>{{ asset.owner_department }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No assets added yet.</p>
+{% endif %}
+
+<h3>Add Asset</h3>
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="form_type" value="asset">
+    <table>{{ asset_form.as_table }}</table>
+    <button type="submit">Add Asset</button>
+</form>
+
+<hr>
+
+<!-- ===== IoCs ===== -->
+<h2>Indicators of Compromise</h2>
+
+{% if iocs %}
+    <table border="1" cellpadding="6">
+        <tr><th>Type</th><th>Value</th><th>Notes</th></tr>
+        {% for ioc in iocs %}
+        <tr>
+            <td>{{ ioc.get_ioc_type_display }}</td>
+            <td>{{ ioc.ioc_value }}</td>
+            <td>{{ ioc.notes }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No IoCs added yet.</p>
+{% endif %}
+
+<h3>Add IoC</h3>
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="form_type" value="ioc">
+    <table>{{ ioc_form.as_table }}</table>
+    <button type="submit">Add IoC</button>
+</form>
+
+<hr>
+
+<!-- ===== RESPONSE ACTIONS ===== -->
+<h2>Response Actions</h2>
+
+{% if actions %}
+    <table border="1" cellpadding="6">
+        <tr><th>Phase</th><th>Action</th><th>Performed By</th><th>Performed At</th></tr>
+        {% for action in actions %}
+        <tr>
+            <td>{{ action.get_phase_display }}</td>
+            <td>{{ action.action_taken }}</td>
+            <td>{{ action.performed_by }}</td>
+            <td>{{ action.performed_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No response actions added yet.</p>
+{% endif %}
+
+<h3>Add Response Action</h3>
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="form_type" value="action">
+    <table>{{ action_form.as_table }}</table>
+    <button type="submit">Add Action</button>
+</form>
+
+<hr>
+
+<!-- ===== MITRE ATT&CK ===== -->
+<h2>MITRE ATT&CK Mappings</h2>
+
+{% if mitre_mappings %}
+    <table border="1" cellpadding="6">
+        <tr><th>Tactic</th><th>Technique ID</th><th>Technique Name</th></tr>
+        {% for mapping in mitre_mappings %}
+        <tr>
+            <td>{{ mapping.tactic }}</td>
+            <td>{{ mapping.technique_id }}</td>
+            <td>{{ mapping.technique_name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No MITRE mappings added yet.</p>
+{% endif %}
+
+<h3>Add MITRE Mapping</h3>
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="form_type" value="mitre">
+    <table>{{ mitre_form.as_table }}</table>
+    <button type="submit">Add Mapping</button>
+</form>
+
+<hr>
+
+<!-- ===== EVIDENCE ===== -->
+<h2>Evidence</h2>
+
+{% if evidence %}
+    <table border="1" cellpadding="6">
+        <tr><th>Type</th><th>Description</th><th>Collected By</th><th>Collected At</th></tr>
+        {% for item in evidence %}
+        <tr>
+            <td>{{ item.get_evidence_type_display }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.collected_by }}</td>
+            <td>{{ item.collected_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No evidence added yet.</p>
+{% endif %}
+
+<h3>Add Evidence</h3>
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="form_type" value="evidence">
+    <table>{{ evidence_form.as_table }}</table>
+    <button type="submit">Add Evidence</button>
+</form>
+
+{% endblock %}
+</html>

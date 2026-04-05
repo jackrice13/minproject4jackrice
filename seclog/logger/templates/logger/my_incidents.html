@@ -1,31 +1,30 @@
 {% extends 'logger/base.html' %}
-{% block title %}Dashboard — SecLog{% endblock %}
+{% block title %}My Incidents — SecLog{% endblock %}
 
 {% block content %}
 <div class="page-header">
-    <h1>Incident Dashboard</h1>
-    <p>Security Operations Incident Tracker</p>
+    <h1>My Incidents</h1>
+    <p>Incidents assigned to {{ request.user.get_full_name|default:request.user.username }}</p>
 </div>
 
 <div class="stats-bar">
     <div class="stat-box">
         <span class="stat-number">{{ open_incidents.count }}</span>
-        <span class="stat-label">Open</span>
+        <span class="stat-label">My Open</span>
     </div>
     <div class="stat-box">
         <span class="stat-number">{{ closed_incidents.count }}</span>
-        <span class="stat-label">Closed</span>
+        <span class="stat-label">My Closed</span>
     </div>
 </div>
 
-<!-- OPEN -->
 <div class="card">
-    <h2>Open Incidents</h2>
+    <h2>My Open Incidents</h2>
     {% if open_incidents %}
     <table>
         <tr>
             <th>ID</th><th>Title</th><th>Status</th>
-            <th>Severity</th><th>Assigned To</th><th>Reported</th><th></th>
+            <th>Severity</th><th>Reported</th><th></th>
         </tr>
         {% for incident in open_incidents %}
         <tr>
@@ -33,25 +32,23 @@
             <td>{{ incident.title }}</td>
             <td><span class="badge badge-{{ incident.status|lower }}">{{ incident.get_status_display }}</span></td>
             <td><span class="badge badge-{{ incident.severity|lower }}">{{ incident.get_severity_display }}</span></td>
-            <td>{{ incident.assigned_to|default:"Unassigned" }}</td>
             <td>{{ incident.reported_at|default:"—" }}</td>
             <td><a href="{% url 'logger:editIncident' incident.pk %}" class="btn btn-secondary">Edit</a></td>
         </tr>
         {% endfor %}
     </table>
     {% else %}
-        <p class="empty-state">No open incidents.</p>
+        <p class="empty-state">No open incidents assigned to you.</p>
     {% endif %}
 </div>
 
-<!-- CLOSED -->
 <div class="card">
-    <h2>Closed Incidents</h2>
+    <h2>My Closed Incidents</h2>
     {% if closed_incidents %}
     <table>
         <tr>
             <th>ID</th><th>Title</th><th>Status</th>
-            <th>Severity</th><th>Assigned To</th><th>Resolved</th><th></th>
+            <th>Severity</th><th>Reported</th><th></th>
         </tr>
         {% for incident in closed_incidents %}
         <tr>
@@ -59,14 +56,13 @@
             <td>{{ incident.title }}</td>
             <td><span class="badge badge-{{ incident.status|lower }}">{{ incident.get_status_display }}</span></td>
             <td><span class="badge badge-{{ incident.severity|lower }}">{{ incident.get_severity_display }}</span></td>
-            <td>{{ incident.assigned_to|default:"Unassigned" }}</td>
             <td>{{ incident.resolved_at|default:"—" }}</td>
             <td><a href="{% url 'logger:editIncident' incident.pk %}" class="btn btn-secondary">View</a></td>
         </tr>
         {% endfor %}
     </table>
     {% else %}
-        <p class="empty-state">No closed incidents.</p>
+        <p class="empty-state">No closed incidents assigned to you.</p>
     {% endif %}
 </div>
 {% endblock %}
