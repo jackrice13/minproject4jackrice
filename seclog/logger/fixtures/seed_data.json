@@ -1,0 +1,377 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$Q5LFIwAObzAkgp5Kh0WIRS$ojH7JKg8OWVe4UPouSDtA1QD3N1PysgIZ8cKeIG6Bc0=",
+    "last_login": "2026-04-05T17:29:46.054Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@admin.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-04-05T14:51:58.390Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$WnGplSCPmkN9TB4HzeHDVM$mGDjTCollrLgW5LanqZEosRikectt0uwClpyMyXJjJ4=",
+    "last_login": "2026-04-05T17:55:57.926Z",
+    "is_superuser": false,
+    "username": "Bob",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-05T16:02:21.205Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$z74nNdsYrDD25MGiL0tpej$oooxJW8dN0Q9vN9cceLiAlnOVyT4iXlVPUUWyFZmbV0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Sam",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-05T16:02:38.775Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$xacItITvRquHYAcjbBqiSM$sbSOvlqrtKAYhMmbSQM07tftmo/XpKLQOG2oEIXbVAs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Phil",
+    "first_name": "Phil",
+    "last_name": "Bert",
+    "email": "phil.bert@3letters.org",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-05T19:05:37.742Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$zWr1oOcKvl5K9CTYXyfeg9$xwtrj27H9xIcPh8MXkmJyWllrLGXKWnkEZhSlFwEom4=",
+    "last_login": "2026-04-05T19:07:10.339Z",
+    "is_superuser": false,
+    "username": "PhilTheSecond",
+    "first_name": "Phil",
+    "last_name": "Bert",
+    "email": "phil.bert@3letters.org",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-05T19:07:09.572Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "logger.responder",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "role": "Security Analyst"
+  }
+},
+{
+  "model": "logger.responder",
+  "pk": 2,
+  "fields": {
+    "user": 3,
+    "role": "Security Engineer"
+  }
+},
+{
+  "model": "logger.responder",
+  "pk": 3,
+  "fields": {
+    "user": 5,
+    "role": "Security Analyst"
+  }
+},
+{
+  "model": "logger.incident",
+  "pk": 1,
+  "fields": {
+    "title": "Phish",
+    "status": "CLOSED",
+    "severity": "MEDIUM",
+    "incident_type": null,
+    "attack_vector": null,
+    "detected_at": null,
+    "reported_at": "2026-04-05T05:01:00Z",
+    "resolved_at": "2026-04-05T18:27:41.866Z",
+    "created_at": "2026-04-05T15:44:02.945Z",
+    "detected_by": "Bob",
+    "assigned_to": null,
+    "data_compromised": false,
+    "data_classification": "",
+    "downtime_minutes": null,
+    "business_impact": "",
+    "cve_number": "",
+    "repeat_incident": false
+  }
+},
+{
+  "model": "logger.incident",
+  "pk": 2,
+  "fields": {
+    "title": "Phish2",
+    "status": "CLOSED",
+    "severity": "MEDIUM",
+    "incident_type": null,
+    "attack_vector": null,
+    "detected_at": null,
+    "reported_at": "2026-04-05T05:01:00Z",
+    "resolved_at": "2026-04-05T18:27:54.140Z",
+    "created_at": "2026-04-05T15:44:52.341Z",
+    "detected_by": "Bob",
+    "assigned_to": 2,
+    "data_compromised": false,
+    "data_classification": "",
+    "downtime_minutes": null,
+    "business_impact": "",
+    "cve_number": "",
+    "repeat_incident": false
+  }
+},
+{
+  "model": "logger.incident",
+  "pk": 3,
+  "fields": {
+    "title": "Phish3",
+    "status": "OPEN",
+    "severity": "MEDIUM",
+    "incident_type": null,
+    "attack_vector": null,
+    "detected_at": null,
+    "reported_at": "2026-04-05T05:01:00Z",
+    "resolved_at": null,
+    "created_at": "2026-04-05T15:45:33.516Z",
+    "detected_by": "Bob",
+    "assigned_to": 3,
+    "data_compromised": false,
+    "data_classification": "",
+    "downtime_minutes": null,
+    "business_impact": "",
+    "cve_number": "",
+    "repeat_incident": false
+  }
+},
+{
+  "model": "logger.incident",
+  "pk": 4,
+  "fields": {
+    "title": "Phish4",
+    "status": "OPEN",
+    "severity": "CRITICAL",
+    "incident_type": null,
+    "attack_vector": null,
+    "detected_at": null,
+    "reported_at": "2026-04-05T05:01:00Z",
+    "resolved_at": "2026-04-05T18:31:51Z",
+    "created_at": "2026-04-05T15:46:21.021Z",
+    "detected_by": "Bob",
+    "assigned_to": 2,
+    "data_compromised": false,
+    "data_classification": "",
+    "downtime_minutes": null,
+    "business_impact": "",
+    "cve_number": "",
+    "repeat_incident": false
+  }
+},
+{
+  "model": "logger.incident",
+  "pk": 5,
+  "fields": {
+    "title": "Hacker Alert",
+    "status": "CLOSED",
+    "severity": "CRITICAL",
+    "incident_type": null,
+    "attack_vector": null,
+    "detected_at": "2026-04-02T14:10:00Z",
+    "reported_at": "2026-04-02T19:00:00Z",
+    "resolved_at": "2026-04-05T18:26:12.124Z",
+    "created_at": "2026-04-05T16:09:23.867Z",
+    "detected_by": "Control System",
+    "assigned_to": 1,
+    "data_compromised": true,
+    "data_classification": "PHI",
+    "downtime_minutes": 60,
+    "business_impact": "",
+    "cve_number": "",
+    "repeat_incident": false
+  }
+},
+{
+  "model": "logger.incident",
+  "pk": 6,
+  "fields": {
+    "title": "RAT Installed",
+    "status": "CLOSED",
+    "severity": "CRITICAL",
+    "incident_type": null,
+    "attack_vector": null,
+    "detected_at": "2026-04-05T05:01:00Z",
+    "reported_at": "2026-04-05T05:01:00Z",
+    "resolved_at": null,
+    "created_at": "2026-04-05T16:28:23.323Z",
+    "detected_by": "Control System",
+    "assigned_to": 2,
+    "data_compromised": false,
+    "data_classification": "CONFIDENTIAL",
+    "downtime_minutes": 0,
+    "business_impact": "",
+    "cve_number": "",
+    "repeat_incident": false
+  }
+},
+{
+  "model": "logger.incident",
+  "pk": 7,
+  "fields": {
+    "title": "Ruby Talked to hackers",
+    "status": "OPEN",
+    "severity": "LOW",
+    "incident_type": null,
+    "attack_vector": null,
+    "detected_at": null,
+    "reported_at": "2026-04-05T05:01:00Z",
+    "resolved_at": null,
+    "created_at": "2026-04-05T17:34:29.302Z",
+    "detected_by": "Email Snooping",
+    "assigned_to": 1,
+    "data_compromised": false,
+    "data_classification": "",
+    "downtime_minutes": null,
+    "business_impact": "",
+    "cve_number": "",
+    "repeat_incident": false
+  }
+},
+{
+  "model": "logger.affectedasset",
+  "pk": 1,
+  "fields": {
+    "incident": 6,
+    "hostname": "HomePC",
+    "ip_address": "192.168.1.1",
+    "asset_type": "WORKSTATION",
+    "owner_department": "Home"
+  }
+},
+{
+  "model": "logger.affectedasset",
+  "pk": 2,
+  "fields": {
+    "incident": 7,
+    "hostname": "RubyPC",
+    "ip_address": "192.168.2.2",
+    "asset_type": "WORKSTATION",
+    "owner_department": ""
+  }
+},
+{
+  "model": "logger.indicatorofcompromise",
+  "pk": 1,
+  "fields": {
+    "incident": 6,
+    "ioc_type": "DOMAIN",
+    "ioc_value": "haxors.net",
+    "notes": "Remote outbound connection to haxors.net"
+  }
+},
+{
+  "model": "logger.responseaction",
+  "pk": 1,
+  "fields": {
+    "incident": 6,
+    "phase": "ERADICATION",
+    "action_taken": "We burned the PC in the backyard.",
+    "performed_by": 1,
+    "performed_at": "2026-04-05T16:12:00Z"
+  }
+},
+{
+  "model": "logger.evidence",
+  "pk": 1,
+  "fields": {
+    "incident": 6,
+    "evidence_type": "LOG",
+    "file_path": "Somewhere/here.txt",
+    "description": "Log of installation",
+    "collected_by": 2,
+    "collected_at": "2026-04-05T14:10:00Z",
+    "chain_of_custody_notes": "Collected from Home PC"
+  }
+},
+{
+  "model": "logger.closingnote",
+  "pk": 1,
+  "fields": {
+    "incident": 1,
+    "summary": "Close",
+    "resolution": "authorized",
+    "authored_by": 1,
+    "authored_at": "2026-04-05T18:24:28.141Z"
+  }
+},
+{
+  "model": "logger.closingnote",
+  "pk": 2,
+  "fields": {
+    "incident": 5,
+    "summary": "nothing",
+    "resolution": "close",
+    "authored_by": 1,
+    "authored_at": "2026-04-05T18:26:12.116Z"
+  }
+},
+{
+  "model": "logger.closingnote",
+  "pk": 3,
+  "fields": {
+    "incident": 2,
+    "summary": "Close",
+    "resolution": "CLose",
+    "authored_by": 1,
+    "authored_at": "2026-04-05T18:27:54.131Z"
+  }
+},
+{
+  "model": "logger.closingnote",
+  "pk": 4,
+  "fields": {
+    "incident": 4,
+    "summary": "HI!",
+    "resolution": "Authorized",
+    "authored_by": 1,
+    "authored_at": "2026-04-05T18:30:20.016Z"
+  }
+}
+]

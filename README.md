@@ -19,16 +19,36 @@ BootStrap
  
 ### Installing
  
-
- 
+Install dependencies
+```
+pip install -r requirements.txt
+```
+Run migrations
+```
+python manage.py migrate
+```
+Loading seed data
+```
+python manage.py loaddata seed_data.json
+ ```
 ### Executing program
  
-* How to run the program
-* Step-by-step bullets
+To Start Website 
 ```
-code blocks for commands
+python manage.py runserver
 ```
+
+User List
+
+Super User
+Username:Admin
+Password:Admin
+
+Generic User
+Username:Bob
+Password:justaword123
  
+
 ## Help
  
 Any advise for common problems or issues.
@@ -38,30 +58,26 @@ command to run if program contains helper info
  
 ## Authors
  
-Contributors names and contact info
- 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+
  
 ## Version History
- 
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
+
 * 0.1
     * Initial Release
  
-## License
- 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
- 
+
 ## Acknowledgments
  
 Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
-×
-Listen
+
+[Django](djangoproject.com)
+
+[Bootstrap 5](getbootstrap.com)
+
+[MITRE ATT&CK Framework](attack.mitre.org)
+
+[Google Font](fonts.google.com)
+
+[Python Software Foundation](python.org)
+
+[Claude (Anthropic)](https://claude.ai/share/840ab7ef-1b92-4dc3-bd62-c7ede5aaa7d9)
