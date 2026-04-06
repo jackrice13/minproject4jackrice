@@ -23,6 +23,10 @@ Install dependencies
 ```
 pip install -r requirements.txt
 ```
+Change Directory
+```
+cd seclog
+```
 Run migrations
 ```
 python manage.py migrate
@@ -40,7 +44,7 @@ python manage.py runserver
 
 User List
 
-Super User
+Super User 
 Username:Admin
 Password:Admin
 

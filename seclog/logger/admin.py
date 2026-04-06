@@ -96,7 +96,7 @@ class IncidentAdmin(admin.ModelAdmin):
     search_fields = ('title', 'cve_number', 'detected_by', 'business_impact')
 
     # Fields that can be edited directly on the list page without opening the record
-    list_editable = ('status', 'severity')
+    list_editable = ('status', 'severity', 'assigned_to')
 
     # How fields are grouped on the detail/edit page
     fieldsets = (
@@ -142,18 +142,18 @@ class IndicatorOfCompromiseAdmin(admin.ModelAdmin):
     list_filter   = ('ioc_type',)
 
 
-@admin.register(ResponseAction)
-class ResponseActionAdmin(admin.ModelAdmin):
-    list_display  = ('phase', 'action_taken', 'performed_by', 'performed_at', 'incident')
-    search_fields = ('action_taken',)
-    list_filter   = ('phase',)
+# @admin.register(ResponseAction)
+# class ResponseActionAdmin(admin.ModelAdmin):
+#     list_display  = ('phase', 'action_taken', 'performed_by', 'performed_at', 'incident')
+#     search_fields = ('action_taken',)
+#     list_filter   = ('phase',)
 
 
-@admin.register(MitreMapping)
-class MitreMappingAdmin(admin.ModelAdmin):
-    list_display  = ('technique_id', 'technique_name', 'tactic', 'incident')
-    search_fields = ('technique_id', 'technique_name', 'tactic')
-    list_filter   = ('tactic',)
+# @admin.register(MitreMapping)
+# class MitreMappingAdmin(admin.ModelAdmin):
+#     list_display  = ('technique_id', 'technique_name', 'tactic', 'incident')
+#     search_fields = ('technique_id', 'technique_name', 'tactic')
+#     list_filter   = ('tactic',)
 
 
 @admin.register(Evidence)

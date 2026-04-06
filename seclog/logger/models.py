@@ -15,6 +15,10 @@ class IncidentType(models.Model):
     """
     type_name = models.CharField(max_length=100, unique=True)
 
+    class Meta:
+        verbose_name = 'Incident Type'
+        verbose_name_plural = '7. Incident Type Management'
+
     def __str__(self):
         return self.type_name
 
@@ -24,6 +28,10 @@ class AttackVector(models.Model):
     How the attacker got in (e.g. Email, Web, USB, Insider).
     """
     vector_name = models.CharField(max_length=100, unique=True)
+
+    class Meta:
+        verbose_name = 'Attack Vector'
+        verbose_name_plural = '8. Attack Vector Management'
 
     def __str__(self):
         return self.vector_name
@@ -40,6 +48,10 @@ class Responder(models.Model):
         on_delete=models.CASCADE,
     )
     role = models.CharField(max_length=100)  # e.g. Analyst, IR Lead
+
+    class Meta:
+        verbose_name = 'Responder   '
+        verbose_name_plural = '2. Responder Management'
 
     def __str__(self):
         return f"{self.user.get_full_name() or self.user.username} ({self.role})"
@@ -115,6 +127,10 @@ class Incident(models.Model):
     cve_number      = models.CharField(max_length=20, blank=True)  # e.g. CVE-2024-1234
     repeat_incident = models.BooleanField(default=False)
 
+    class Meta:
+        verbose_name = 'Incidents'
+        verbose_name_plural = '1. Incident Assignment Management'
+
     def __str__(self):
         return f"[{self.incident_id}] {self.title} — {self.status}"
 
@@ -148,6 +164,10 @@ class AffectedAsset(models.Model):
     asset_type       = models.CharField(max_length=20, choices=AssetType.choices, blank=True)
     owner_department = models.CharField(max_length=100, blank=True)
 
+    class Meta:
+        verbose_name = 'Affected Assets'
+        verbose_name_plural = '4. Asset History'
+
     def __str__(self):
         return f"{self.hostname} ({self.ip_address})"
 
@@ -174,6 +194,10 @@ class IndicatorOfCompromise(models.Model):
     ioc_type  = models.CharField(max_length=20, choices=IoCType.choices)
     ioc_value = models.CharField(max_length=255)   # the actual hash, IP, domain, etc.
     notes     = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name = 'I.O.C Management'
+        verbose_name_plural = '6. I.O.C Management'
 
     def __str__(self):
         return f"{self.ioc_type}: {self.ioc_value}"
@@ -250,6 +274,10 @@ class Evidence(models.Model):
     collected_at            = models.DateTimeField(null=True, blank=True)
     chain_of_custody_notes  = models.TextField(blank=True)
 
+    class Meta:
+        verbose_name = 'Evidence'
+        verbose_name_plural = '5. Evidence Management'
+
     def __str__(self):
         return f"{self.evidence_type} — {self.description[:60]}"
 
@@ -272,6 +300,9 @@ class PostIncidentReview(models.Model):
     authored_by     = models.ForeignKey(Responder, on_delete=models.SET_NULL, null=True, blank=True)
     authored_at     = models.DateTimeField(null=True, blank=True)
 
+    class Meta:
+        verbose_name = 'Post Incident Review'
+        verbose_name_plural = '3. Post Incident Review'
     def __str__(self):
         return f"Review for Incident #{self.incident.pk}"
 
