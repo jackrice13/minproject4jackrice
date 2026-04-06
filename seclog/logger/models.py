@@ -17,7 +17,7 @@ class IncidentType(models.Model):
 
     class Meta:
         verbose_name = 'Incident Type'
-        verbose_name_plural = '7. Incident Type Management'
+        verbose_name_plural = 'Incident Type Management'
 
     def __str__(self):
         return self.type_name
@@ -31,7 +31,7 @@ class AttackVector(models.Model):
 
     class Meta:
         verbose_name = 'Attack Vector'
-        verbose_name_plural = '8. Attack Vector Management'
+        verbose_name_plural = 'Attack Vector Management'
 
     def __str__(self):
         return self.vector_name
@@ -51,7 +51,7 @@ class Responder(models.Model):
 
     class Meta:
         verbose_name = 'Responder   '
-        verbose_name_plural = '2. Responder Management'
+        verbose_name_plural = 'Responder Management'
 
     def __str__(self):
         return f"{self.user.get_full_name() or self.user.username} ({self.role})"
@@ -129,7 +129,7 @@ class Incident(models.Model):
 
     class Meta:
         verbose_name = 'Incidents'
-        verbose_name_plural = '1. Incident Assignment Management'
+        verbose_name_plural = 'Incident Assignment Management'
 
     def __str__(self):
         return f"[{self.incident_id}] {self.title} — {self.status}"
@@ -166,7 +166,7 @@ class AffectedAsset(models.Model):
 
     class Meta:
         verbose_name = 'Affected Assets'
-        verbose_name_plural = '4. Asset History'
+        verbose_name_plural = 'Asset History'
 
     def __str__(self):
         return f"{self.hostname} ({self.ip_address})"
@@ -197,7 +197,7 @@ class IndicatorOfCompromise(models.Model):
 
     class Meta:
         verbose_name = 'I.O.C Management'
-        verbose_name_plural = '6. I.O.C Management'
+        verbose_name_plural = 'I.O.C Management'
 
     def __str__(self):
         return f"{self.ioc_type}: {self.ioc_value}"
@@ -276,7 +276,7 @@ class Evidence(models.Model):
 
     class Meta:
         verbose_name = 'Evidence'
-        verbose_name_plural = '5. Evidence Management'
+        verbose_name_plural = 'Evidence Management'
 
     def __str__(self):
         return f"{self.evidence_type} — {self.description[:60]}"
@@ -302,7 +302,7 @@ class PostIncidentReview(models.Model):
 
     class Meta:
         verbose_name = 'Post Incident Review'
-        verbose_name_plural = '3. Post Incident Review'
+        verbose_name_plural = 'Post Incident Review'
     def __str__(self):
         return f"Review for Incident #{self.incident.pk}"
 
