@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
+# Jack Rice
+# INF 601
+# Mini Project 4
+
 import os
 import sys
 
