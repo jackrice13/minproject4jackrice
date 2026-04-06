@@ -3,15 +3,9 @@
 
 {% block content %}
 <div class="page-header">
-    <h1>{{ incident.incident_id }} — {{ incident.title }}</h1>
+    <h1>Incident ID:{{ incident.incident_id }} Title: {{ incident.title }}</h1>
     <p><a href="{% url 'logger:index' %}">← Back to Dashboard</a></p>
 </div>
-
-<h1>Incident: {{ incident.incident_id }} — {{ incident.title }}</h1>
-<a href="{% url 'logger:index' %}">← Back to Dashboard</a>
-
-<hr>
-
 <!-- ===== INCIDENT DETAILS ===== -->
 <h2>Incident Details</h2>
 <form method="post">

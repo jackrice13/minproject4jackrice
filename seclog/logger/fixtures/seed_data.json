@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$1200000$Q5LFIwAObzAkgp5Kh0WIRS$ojH7JKg8OWVe4UPouSDtA1QD3N1PysgIZ8cKeIG6Bc0=",
-    "last_login": "2026-04-05T17:29:46.054Z",
+    "last_login": "2026-04-05T20:24:12.267Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -22,7 +22,7 @@
   "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$1200000$WnGplSCPmkN9TB4HzeHDVM$mGDjTCollrLgW5LanqZEosRikectt0uwClpyMyXJjJ4=",
-    "last_login": "2026-04-05T17:55:57.926Z",
+    "last_login": "2026-04-06T00:56:12.451Z",
     "is_superuser": false,
     "username": "Bob",
     "first_name": "",
@@ -87,6 +87,174 @@
     "date_joined": "2026-04-05T19:07:09.572Z",
     "groups": [],
     "user_permissions": []
+  }
+},
+{
+  "model": "logger.incidenttype",
+  "pk": 1,
+  "fields": {
+    "type_name": "Denial of Service (DoS)"
+  }
+},
+{
+  "model": "logger.incidenttype",
+  "pk": 2,
+  "fields": {
+    "type_name": "Man-in-the-Middle (MitM)"
+  }
+},
+{
+  "model": "logger.incidenttype",
+  "pk": 3,
+  "fields": {
+    "type_name": "Viruses & worms"
+  }
+},
+{
+  "model": "logger.incidenttype",
+  "pk": 4,
+  "fields": {
+    "type_name": "Ransomware"
+  }
+},
+{
+  "model": "logger.incidenttype",
+  "pk": 5,
+  "fields": {
+    "type_name": "Phishing (email), Smishing (SMS), Vishing (voice)"
+  }
+},
+{
+  "model": "logger.incidenttype",
+  "pk": 6,
+  "fields": {
+    "type_name": "Web Application Attacks"
+  }
+},
+{
+  "model": "logger.incidenttype",
+  "pk": 7,
+  "fields": {
+    "type_name": "Brute force / credential stuffing"
+  }
+},
+{
+  "model": "logger.incidenttype",
+  "pk": 8,
+  "fields": {
+    "type_name": "Password spraying"
+  }
+},
+{
+  "model": "logger.incidenttype",
+  "pk": 9,
+  "fields": {
+    "type_name": "Malicious insider (data theft, sabotage)"
+  }
+},
+{
+  "model": "logger.incidenttype",
+  "pk": 10,
+  "fields": {
+    "type_name": "Compromised insider (account takeover)"
+  }
+},
+{
+  "model": "logger.incidenttype",
+  "pk": 11,
+  "fields": {
+    "type_name": "Unauthorized data exfiltration"
+  }
+},
+{
+  "model": "logger.incidenttype",
+  "pk": 12,
+  "fields": {
+    "type_name": "Accidental exposure (misconfigured cloud storage)"
+  }
+},
+{
+  "model": "logger.incidenttype",
+  "pk": 13,
+  "fields": {
+    "type_name": "Unauthorized physical access"
+  }
+},
+{
+  "model": "logger.incidenttype",
+  "pk": 14,
+  "fields": {
+    "type_name": "Advanced Persistent Threats (APTs)"
+  }
+},
+{
+  "model": "logger.attackvector",
+  "pk": 1,
+  "fields": {
+    "vector_name": "Network"
+  }
+},
+{
+  "model": "logger.attackvector",
+  "pk": 2,
+  "fields": {
+    "vector_name": "Software"
+  }
+},
+{
+  "model": "logger.attackvector",
+  "pk": 3,
+  "fields": {
+    "vector_name": "Human"
+  }
+},
+{
+  "model": "logger.attackvector",
+  "pk": 4,
+  "fields": {
+    "vector_name": "Credential"
+  }
+},
+{
+  "model": "logger.attackvector",
+  "pk": 5,
+  "fields": {
+    "vector_name": "Endpoint"
+  }
+},
+{
+  "model": "logger.attackvector",
+  "pk": 6,
+  "fields": {
+    "vector_name": "Cloud & Infrastructure"
+  }
+},
+{
+  "model": "logger.attackvector",
+  "pk": 7,
+  "fields": {
+    "vector_name": "Supply Chain"
+  }
+},
+{
+  "model": "logger.attackvector",
+  "pk": 8,
+  "fields": {
+    "vector_name": "Wireless"
+  }
+},
+{
+  "model": "logger.attackvector",
+  "pk": 9,
+  "fields": {
+    "vector_name": "Email"
+  }
+},
+{
+  "model": "logger.attackvector",
+  "pk": 10,
+  "fields": {
+    "vector_name": "Physical"
   }
 },
 {

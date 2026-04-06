@@ -32,6 +32,7 @@
             <td>{{ incident.title }}</td>
             <td><span class="badge badge-{{ incident.status|lower }}">{{ incident.get_status_display }}</span></td>
             <td><span class="badge badge-{{ incident.severity|lower }}">{{ incident.get_severity_display }}</span></td>
+            <td>{{ incident.assigned_to|default:"Unassigned" }}</td>
             <td>{{ incident.reported_at|default:"—" }}</td>
             <td><a href="{% url 'logger:editIncident' incident.pk %}" class="btn btn-secondary">Edit</a></td>
             <td>
@@ -59,7 +60,7 @@
     <table>
         <tr>
             <th>ID</th><th>Title</th><th>Status</th>
-            <th>Severity</th><th>Reported</th><th></th>
+            <th>Severity</th><th>Reported</th><th>Reported</th><th>Actions</th>
         </tr>
         {% for incident in closed_incidents %}
         <tr>
@@ -67,6 +68,7 @@
             <td>{{ incident.title }}</td>
             <td><span class="badge badge-{{ incident.status|lower }}">{{ incident.get_status_display }}</span></td>
             <td><span class="badge badge-{{ incident.severity|lower }}">{{ incident.get_severity_display }}</span></td>
+            <td>{{ incident.assigned_to|default:"Unassigned" }}</td>
             <td>{{ incident.resolved_at|default:"—" }}</td>
             <td><a href="{% url 'logger:editIncident' incident.pk %}" class="btn btn-secondary">View</a></td>
         </tr>
@@ -152,7 +154,6 @@
     </div>
 </div>
 
-...
 
     <script>
         let currentIncidentPk = null;
